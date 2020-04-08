@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Apr 07, 2020 at 12:53 PM
+-- Generation Time: Apr 08, 2020 at 08:49 AM
 -- Server version: 5.5.62
 -- PHP Version: 7.4.4
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `Album` (
   `id` int(11) NOT NULL,
-  `nomAlbum` varchar(30) NOT NULL
+  `nomAlbum` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -40,7 +40,7 @@ CREATE TABLE `Album` (
 
 CREATE TABLE `Artiste` (
   `id` int(11) NOT NULL,
-  `nomArtiste` varchar(30) NOT NULL
+  `nomArtiste` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -51,8 +51,8 @@ CREATE TABLE `Artiste` (
 
 CREATE TABLE `Chanson` (
   `id` int(11) NOT NULL,
-  `titre` varchar(30) DEFAULT NULL,
-  `repertoire` varchar(50) NOT NULL,
+  `titre` varchar(50) DEFAULT NULL,
+  `nomFichier` varchar(60) NOT NULL,
   `idAlbum` int(11) DEFAULT NULL,
   `idArtiste` int(11) DEFAULT NULL,
   `idGenre` int(11) DEFAULT NULL
@@ -77,7 +77,7 @@ CREATE TABLE `ContientPlaylist` (
 
 CREATE TABLE `Genre` (
   `id` int(11) NOT NULL,
-  `nomGenre` varchar(30) NOT NULL
+  `nomGenre` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -88,7 +88,7 @@ CREATE TABLE `Genre` (
 
 CREATE TABLE `Playlist` (
   `id` int(11) NOT NULL,
-  `nomPlaylist` varchar(30) NOT NULL
+  `nomPlaylist` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -177,16 +177,16 @@ ALTER TABLE `Playlist`
 -- Constraints for table `Chanson`
 --
 ALTER TABLE `Chanson`
-  ADD CONSTRAINT `Chanson_ibfk_3` FOREIGN KEY (`idGenre`) REFERENCES `Genre` (`id`),
   ADD CONSTRAINT `Chanson_ibfk_1` FOREIGN KEY (`idAlbum`) REFERENCES `Album` (`id`),
-  ADD CONSTRAINT `Chanson_ibfk_2` FOREIGN KEY (`idArtiste`) REFERENCES `Artiste` (`id`);
+  ADD CONSTRAINT `Chanson_ibfk_2` FOREIGN KEY (`idArtiste`) REFERENCES `Artiste` (`id`),
+  ADD CONSTRAINT `Chanson_ibfk_3` FOREIGN KEY (`idGenre`) REFERENCES `Genre` (`id`);
 
 --
 -- Constraints for table `ContientPlaylist`
 --
 ALTER TABLE `ContientPlaylist`
-  ADD CONSTRAINT `ContientPlaylist_ibfk_2` FOREIGN KEY (`idPlaylist`) REFERENCES `Playlist` (`id`),
-  ADD CONSTRAINT `ContientPlaylist_ibfk_1` FOREIGN KEY (`idChanson`) REFERENCES `Chanson` (`id`);
+  ADD CONSTRAINT `ContientPlaylist_ibfk_1` FOREIGN KEY (`idChanson`) REFERENCES `Chanson` (`id`),
+  ADD CONSTRAINT `ContientPlaylist_ibfk_2` FOREIGN KEY (`idPlaylist`) REFERENCES `Playlist` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
