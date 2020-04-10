@@ -23,5 +23,52 @@ public class DaoJPA {
 		
 		return em;
 	}
-
+	
+	/**
+	 * Pour commiter une transaction
+	 * Mais avant on s'assure que les objets sont bien synchronisés sinon on peut rencontrer quelques problèmes
+	 */
+	public static void commit() {
+		em.flush();
+	}
+	
+	/**
+	 * Pour annuler une transaction
+	 */
+	public static void rollback() {
+		tx.rollback();
+	}
+	
+	/**
+	 * Pour terminer une session
+	 */
+	public static void close() {
+		em.close(); em = null;
+		emf.close(); emf = null;
+	}
+	
+	/**
+	 * Pour pouvoir remettre la base à O avant des tests
+	 * Sauf la table Genre qui contient la liste des genres possible
+	 */
+	public static void viderBase() {
+		//Album
+		getManager().createQuery("DELETE FROM Album").executeUpdate();
+		getManager().createNativeQuery("ALTER TABLE Album AUTO_INCREMENT = 1").executeUpdate();
+		
+		//Artiste
+		getManager().createQuery("DELETE FROM Artiste").executeUpdate();
+		getManager().createNativeQuery("ALTER TABLE Artiste AUTO_INCREMENT = 1").executeUpdate();
+		
+		//ContientPlaylist
+		getManager().createQuery("DELETE FROM ContientPlaylist").executeUpdate();
+		
+		//Chanson
+		getManager().createQuery("DELETE FROM Chanson").executeUpdate();
+		getManager().createNativeQuery("ALTER TABLE Chanson AUTO_INCREMENT = 1").executeUpdate();
+		
+		//Playlist
+		getManager().createQuery("DELETE FROM Playlist").executeUpdate();
+		getManager().createNativeQuery("ALTER TABLE Playlist AUTO_INCREMENT = 1").executeUpdate();
+	}
 }
