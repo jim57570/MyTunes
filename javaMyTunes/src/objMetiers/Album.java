@@ -72,6 +72,6 @@ public class Album {
 		return "Album [id=" + id + ", nom=" + nom + "]";
 	}
 	
-	//VOIR POUR AJOUTER METHODE POUR TESTER SI LE NOM DE L'ALBUM EST VIDE OU NON
+	// TODO VOIR POUR AJOUTER METHODE POUR TESTER SI LE NOM DE L'ALBUM EST VIDE OU NON
 	
 }

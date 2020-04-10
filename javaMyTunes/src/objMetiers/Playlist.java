@@ -108,6 +108,6 @@ public class Playlist {
 		return "Playlist [id=" + id + ", nom=" + nom + ", contient=" + contient + "]";
 	}
 	
-	//VOIR POUR AJOUTER METHODE POUR TESTER SI LE TITRE DE LA PLAYLIST EST VIDE OU NON
+	// TODO VOIR POUR AJOUTER METHODE POUR TESTER SI LE TITRE DE LA PLAYLIST EST VIDE OU NON
 	
 }

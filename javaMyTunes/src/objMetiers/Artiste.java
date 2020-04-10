@@ -72,6 +72,6 @@ public class Artiste {
 		return "Artiste [id=" + id + ", nom=" + nom + "]";
 	}
 	
-	//VOIR POUR AJOUTER METHODE POUR TESTER SI LE NOM DE L'ARTISTE EST VIDE OU NON
+	// TODO VOIR POUR AJOUTER METHODE POUR TESTER SI LE NOM DE L'ARTISTE EST VIDE OU NON
 	
 }

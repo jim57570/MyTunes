@@ -45,7 +45,6 @@ public class Chanson {
 
 	public Chanson() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Chanson(String titre, String nomFichier) {
@@ -172,5 +171,6 @@ public class Chanson {
 				+ ", artiste=" + artiste + ", genre=" + genre + "]";
 	}
 	
-	//VOIR POUR AJOUTER METHODE POUR TESTER SI LE TITRE DE LA CHANSON EST VIDE OU NON
+	// TODO VOIR POUR AJOUTER METHODE POUR TESTER SI LE TITRE DE LA CHANSON EST VIDE OU NON
+	// TODO Méthodes pour pouvoir modifier les tags id3
 }
