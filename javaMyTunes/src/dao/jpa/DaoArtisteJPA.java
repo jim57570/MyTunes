@@ -46,8 +46,7 @@ public class DaoArtisteJPA extends DaoJPA implements DaoArtiste {
 	public void save(Artiste o) {
 		// TODO Ajouter méthodes pour vérifier un artiste avant de l'enregistrer
 		DaoJPA.getManager().persist(o);
-		DaoJPA.commit(); //discutable de commiter ici
-		
+		DaoJPA.commit(); //discutable de commiter ici	
 	}
 
 	@Override

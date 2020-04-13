@@ -33,22 +33,20 @@ public class DaoAlbumJPA extends DaoJPA implements DaoAlbum {
 	public Album get(String nom) {
 		//requête JPQL avec un paramètre
 		List<Album> listAlbum = DaoJPA.getManager()
-				.createQuery("SELECT a FROM Album WHERE a.nomAlbum LIKE ?1", Album.class)
+				.createQuery("SELECT a FROM Album a WHERE a.nomAlbum LIKE ?1", Album.class)
 				.setParameter(1, "%"+nom+"%")
 				.getResultList();
 		if(listAlbum.size() == 0)
 			return null;
 		else
-			return listAlbum.get(0); //Si la requête renvoie plusieurs résultats, on prend le premier (choix arbitraire)
-				
+			return listAlbum.get(0); //Si la requête renvoie plusieurs résultats, on prend le premier (choix arbitraire)			
 	}
 
 	@Override
 	public void save(Album o) {
-		// TODO Ajouter méthodes pour vérifier un album avant de le supprimer
+		// TODO Ajouter méthodes pour vérifier un album avant de l'enregistrer
 		DaoJPA.getManager().persist(o);
-		DaoJPA.commit(); //discutable de commiter ici
-		
+		DaoJPA.commit(); //discutable de commiter ici	
 	}
 
 	@Override
@@ -59,7 +57,6 @@ public class DaoAlbumJPA extends DaoJPA implements DaoAlbum {
 		DaoJPA.commit();
 		
 		o.setId(-1);
-		
 	}
 
 	@Override
