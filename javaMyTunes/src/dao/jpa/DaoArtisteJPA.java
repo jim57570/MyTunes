@@ -33,7 +33,7 @@ public class DaoArtisteJPA extends DaoJPA implements DaoArtiste {
 	public Artiste get(String nom) {
 		//requête JPQL avec un paramètre
 		List<Artiste> listArtiste = DaoJPA.getManager()
-				.createQuery("SELECT a FROM Artiste a WHERE a.nomArtiste LIKE ?1", Artiste.class)
+				.createQuery("SELECT a FROM Artiste a WHERE a.nom LIKE ?1", Artiste.class) //a.nom par rapport à l'objet métier et pas à la bdd !
 				.setParameter(1, nom)
 				.getResultList();
 		if(listArtiste.size() == 0)
