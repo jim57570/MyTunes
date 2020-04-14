@@ -33,7 +33,7 @@ public class DaoAlbumJPA extends DaoJPA implements DaoAlbum {
 	public Album get(String nom) {
 		//requête JPQL avec un paramètre
 		List<Album> listAlbum = DaoJPA.getManager()
-				.createQuery("SELECT a FROM Album a WHERE a.nomAlbum LIKE ?1", Album.class)
+				.createQuery("SELECT a FROM Album a WHERE a.nom LIKE ?1", Album.class) //a.nom par rapport à l'objet métier et pas à la bdd !
 				.setParameter(1, "%"+nom+"%")
 				.getResultList();
 		if(listAlbum.size() == 0)

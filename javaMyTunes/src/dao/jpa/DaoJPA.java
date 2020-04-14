@@ -30,6 +30,8 @@ public class DaoJPA {
 	 */
 	public static void commit() {
 		em.flush();
+		em.clear();
+		tx.commit();
 	}
 	
 	/**
