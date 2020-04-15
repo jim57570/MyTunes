@@ -28,10 +28,10 @@ public class Playlist {
 	@ManyToMany //pour gérer la relation entre Playlist <> Chanson
 	@JoinTable(name="ContientPlaylist",
 	joinColumns= {
-			@JoinColumn(table="Playlist", name="id", referencedColumnName="idPlaylist")
+			@JoinColumn(table="Playlist", name="idPlaylist", referencedColumnName="id")
 	},
 	inverseJoinColumns= {
-			@JoinColumn(table="chanson", name="id", referencedColumnName="idChanson")
+			@JoinColumn(table="chanson", name="idChanson", referencedColumnName="id")
 	})
 	private List<Chanson> contient = new ArrayList<Chanson>();
 

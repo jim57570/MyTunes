@@ -33,7 +33,7 @@ public class DaoGenreJPA extends DaoJPA implements DaoGenre {
 	public Genre get(String nom) {
 		// requete JPQL avec un parametre
 		List<Genre> listGenre = DaoJPA.getManager()
-				.createQuery("SELECT g FROM Genre g WHERE Genre.nomGenre LIKE ?1", Genre.class)
+				.createQuery("SELECT g FROM Genre g WHERE g.nom LIKE ?1", Genre.class) //g.nom par rapport à l'objet métier et pas à la bdd !
 				.setParameter(1, nom)
 				.getResultList();
 		if(listGenre.size() == 0)

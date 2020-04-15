@@ -17,7 +17,7 @@ public class DaoPlaylistJPA extends DaoJPA implements DaoPlaylist {
 	 * @return instance de DaoPlaylist
 	 */
 	
-	public DaoPlaylist getInstance() {
+	static public DaoPlaylist getInstance() {
 		if(instance == null)
 			instance = new DaoPlaylistJPA();
 		
@@ -34,7 +34,7 @@ public class DaoPlaylistJPA extends DaoJPA implements DaoPlaylist {
 	public Playlist get(String nom) {
 		//requête JPQL avec un paramètre
 		List<Playlist> listPlaylist = DaoJPA.getManager()
-				.createQuery("SELECT p FROM Playlist p WHERE Playlist.nomPlaylist LIKE ?1", Playlist.class)
+				.createQuery("SELECT p FROM Playlist p WHERE p.nom LIKE ?1", Playlist.class) //p.nom par rapport à l'objet métier et pas à la bdd !
 				.setParameter(1, nom)
 				.getResultList();
 		if(listPlaylist.size() == 0)

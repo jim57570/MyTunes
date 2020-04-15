@@ -62,6 +62,7 @@ public class TestArtiste {
 		assertEquals(-1, a2.getId());
 	}
 	
+	@Test
 	public void testListAll() {
 		//on test si la fonction retourne bien une liste
 		assertNotNull(dao.loadAll());
