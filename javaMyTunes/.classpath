@@ -13,5 +13,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="lib" path="/home/jim/git/myTunes/javaMyTunes/mysql-connector-java-5.1.48-bin.jar"/>
+	<classpathentry kind="lib" path="/home/jim/git/myTunes/javaMyTunes/jid3lib-0.6.1-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
