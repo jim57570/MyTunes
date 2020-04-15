@@ -43,18 +43,6 @@ public class DaoGenreJPA extends DaoJPA implements DaoGenre {
 	}
 
 	@Override
-	public void save(Genre o) {
-		// TODO A supprimer (on ne doit pas ajouter ou supprimer des genres)
-		
-	}
-
-	@Override
-	public void remove(Genre o) {
-		// TODO A supprimer (on ne doit pas ajouter ou supprimer des genres)
-		
-	}
-
-	@Override
 	public List<Genre> loadAll() {
 		return DaoJPA.getManager().createQuery("SELECT g FROM Genre g", Genre.class).getResultList();
 	}
