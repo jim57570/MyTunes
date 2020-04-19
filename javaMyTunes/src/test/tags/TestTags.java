@@ -22,12 +22,12 @@ public class TestTags {
 		
 		
 		//TEST JAUDIOTAGGER
-		File source = new File("/home/jim/Music/01 Nappeux.mp3");
+		File source = new File("/home/jim/Music/02 Dr. Feelgood.mp3");
 		AudioFile f = AudioFileIO.read(source);
 		Tag tag = f.getTag();
-		System.out.println(tag.getFirst(FieldKey.COMPOSER));
-		tag.setField(FieldKey.TITLE, "OUI");
-		f.commit();
+		System.out.println(tag.getFirst(FieldKey.GENRE));
+		//tag.setField(FieldKey.TITLE, "OUI");
+		//f.commit();
 	}
 
 }
