@@ -13,7 +13,7 @@ public class DaoJPA {
 	
 	public static EntityManager getManager() {
 		if(em == null) {
-			emf = Persistence.createEntityManagerFactory("javaMyTunes"); //Pour indiquer la persistenceUnit à utiliser (bdd)
+			emf = Persistence.createEntityManagerFactory("bddMyTunes"); //Pour indiquer la persistenceUnit à utiliser (bdd)
 			em = emf.createEntityManager();
 			tx = em.getTransaction();
 		}
