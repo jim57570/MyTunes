@@ -9,5 +9,18 @@
 		<managed-bean-class>beans.BeanGenre</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>beanChanson</managed-bean-name>
+		<managed-bean-class>beans.BeanChanson</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<navigation-rule>
+		<display-name>formChanson.xhtml</display-name>
+		<from-view-id>/formChanson.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>ChansonEnregistre</from-outcome>
+			<to-view-id>/listeChansons.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
 </faces-config>
