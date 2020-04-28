@@ -5,6 +5,7 @@ import java.util.List;
 
 import dao.jpa.DaoChansonJPA;
 import objMetiers.Chanson;
+import tagEdit.TagEdit;
 
 public class BeanChanson implements Serializable {
 	
@@ -19,7 +20,9 @@ public class BeanChanson implements Serializable {
 	}
 	
 	public String save() {
-		DaoChansonJPA.getInstance().save(chanson);
+		//DaoChansonJPA.getInstance().save(chanson);
+		//test importChanson avec tags
+		DaoChansonJPA.getInstance().save(TagEdit.importChanson(chanson.getNomFichier()));
 		return "ChansonEnregistre";
 	}
 	

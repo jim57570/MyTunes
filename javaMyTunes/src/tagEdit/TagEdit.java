@@ -34,6 +34,7 @@ public class TagEdit {
 	
 	public static Chanson importChanson(String path) {
 		// TODO déplacer le mp3 dans le dossier choisi
+		// TODO modifier la fonction pour prendre en paramètre un objet chanson
 		Chanson c = new Chanson();
 		
 		DaoAlbum daoAlbum = DaoAlbumJPA.getInstance();
