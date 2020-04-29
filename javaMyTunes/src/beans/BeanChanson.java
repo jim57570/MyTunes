@@ -19,11 +19,24 @@ public class BeanChanson implements Serializable {
 		this.chanson = chanson;
 	}
 	
+	public int getIdChanson() {
+		return chanson.getId();
+	}
+	
+	public void setIdChanson(int id) {
+		System.out.println("Chanson = " + id);
+		chanson = DaoChansonJPA.getInstance().get(id);
+	}
+	
 	public String save() {
 		//DaoChansonJPA.getInstance().save(chanson);
 		//test importChanson avec tags
 		DaoChansonJPA.getInstance().save(TagEdit.importChanson(chanson.getNomFichier()));
 		return "ChansonEnregistre";
+	}
+	
+	public String edit() {
+		return "ChansonModifie";
 	}
 	
 	public List<Chanson> getChansons() {

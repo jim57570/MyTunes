@@ -39,6 +39,13 @@
 				<f:facet name="header">Genre</f:facet>
 				<h:outputText value="#{chanson.genre.nom}"/>
 			</h:column>
+			<h:column>
+				<f:facet name="header">Modifier</f:facet>
+				<h:outputLink value="editChanson.xhtml">
+					<h:outputText value="edit"/>
+					<f:param name="idChanson" value="#{chanson.id}" />
+				</h:outputLink>
+			</h:column>
 		</h:dataTable>
 	</div>
 </h:body>
