@@ -32,8 +32,23 @@
 			</h:inputText>
 			
 			<h:outputLabel value="Nom de l'artiste:" />
-			<h:selectOneMenu value="#{chanson.artiste.nom}">
+			<h:selectOneMenu value="#{beanChanson.chanson.artiste.id}">
+				<f:selectItem itemLabel="Null" itemValue="null"></f:selectItem>
 				<f:selectItems value="#{beanArtiste.artistes}" var="artiste" itemLabel="#{artiste.nom}" itemValue="#{artiste.id}" />
+				<f:validateRequired />
+			</h:selectOneMenu>
+			
+			<h:outputLabel value="Nom de l'album:" />
+			<h:selectOneMenu value="#{beanChanson.chanson.album.id}">
+				<f:selectItem itemLabel="Null" itemValue="null"></f:selectItem>
+				<f:selectItems value="#{beanAlbum.albums}" var="album" itemLabel="#{album.nom}" itemValue="#{album.id}" />
+				<f:validateRequired />
+			</h:selectOneMenu>
+			
+			<h:outputLabel value="Genre:" />
+			<h:selectOneMenu value="#{beanChanson.chanson.genre.id}">
+				<f:selectItem itemLabel="Null" itemValue="null"></f:selectItem>
+				<f:selectItems value="#{beanGenre.genres}" var="genre" itemLabel="#{genre.nom}" itemValue="#{genre.id}" />
 				<f:validateRequired />
 			</h:selectOneMenu>
 			

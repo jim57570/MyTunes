@@ -24,6 +24,11 @@
 		<managed-bean-class>beans.BeanArtiste</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>beanAlbum</managed-bean-name>
+		<managed-bean-class>beans.BeanAlbum</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 	<navigation-rule>
 		<display-name>formChanson.xhtml</display-name>
 		<from-view-id>/formChanson.xhtml</from-view-id>
