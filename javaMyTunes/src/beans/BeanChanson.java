@@ -9,6 +9,10 @@ import tagEdit.TagEdit;
 
 public class BeanChanson implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Chanson chanson = new Chanson();
 	
 	public Chanson getChanson() {

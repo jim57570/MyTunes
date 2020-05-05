@@ -13,6 +13,7 @@ import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.TagException;
 import org.jaudiotagger.tag.id3.AbstractID3v2Tag;
+import org.jaudiotagger.tag.reference.GenreTypes;
 
 import dao.DaoAlbum;
 import dao.DaoArtiste;
@@ -81,8 +82,13 @@ public class TagEdit {
 				//GENRE
 				if(tag.getFirst(FieldKey.GENRE).length() > 0) {
 					//on recupère le genre correspondant depuis la bdd
-					int idGenre = Integer.valueOf(tag.getFirst(FieldKey.GENRE));
-					Genre genre  = daoGenre.get(idGenre);
+					//Le tag du genre est sous la forme "(idGenre)" il faut donc enlever les parenthèse
+					String tagGenre = tag.getFirst(FieldKey.GENRE);
+					tagGenre = tagGenre.replace("(", "");
+					tagGenre = tagGenre.replace(")", "");
+					//System.out.println(tagGenre);
+					int idGenre = Integer.valueOf(tagGenre);
+					Genre genre  = daoGenre.get(idGenre+1); //+1 car les genres commencent à partir de 1 sur la bdd et non 0
 					if(genre != null) {
 						c.setGenre(genre);
 					}
