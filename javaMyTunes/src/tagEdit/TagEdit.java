@@ -123,8 +123,10 @@ public class TagEdit {
 					tag.setField(FieldKey.ARTIST, c.getArtiste().getNom());
 				if(c.getAlbum() != null)
 					tag.setField(FieldKey.ALBUM, c.getAlbum().getNom());
-				if(c.getGenre() != null)
-					tag.setField(FieldKey.GENRE, c.getGenre().getNom());
+				if(c.getGenre() != null) {
+					String genre = "(" + (c.getGenre().getId()-1) + ")";
+					tag.setField(FieldKey.GENRE, genre); //Le tag du genre est sous la forme "(idGenre)" il faut donc ajouter les parenthèse et -1 par rappoert à la bdd
+				}
 				
 				af.setTag(tag);
 				af.commit();
@@ -141,101 +143,4 @@ public class TagEdit {
 			System.out.println("Fichier inexistant !");
 		}
 	}
-	/*
-	public static void setTitle(Chanson c, String title) {
-		File mp3 = new File(c.getNomFichier());
-		try {
-			//modification du tag du mp3
-			AudioFile af = AudioFileIO.read(mp3);
-			Tag tag = af.getTag();
-			tag.setField(FieldKey.TITLE, title);
-			af.commit();
-			
-			//Modification du titre de la chanson
-			c.setTitre(title);
-		} catch (CannotReadException | IOException | TagException | ReadOnlyFileException
-				| InvalidAudioFrameException e) {
-			System.out.println("Erreur lors de l'ouverture du .mp3 par JAudioTagger !");
-			e.printStackTrace();
-		} catch (CannotWriteException e) {
-			System.out.println("Erreur lors de l'écriture du .mp3 par JAudiotagger !");
-			e.printStackTrace();
-		}
-	}
-	
-	public static void setAlbumTitle(Chanson c, String albumTitle) {
-		File mp3 = new File(c.getNomFichier());
-		try {
-			//modification du tag mp3
-			AudioFile af = AudioFileIO.read(mp3);
-			Tag tag = af.getTag();
-			tag.setField(FieldKey.ALBUM, albumTitle);
-			af.commit();
-			
-			//Modification du titre de l'album
-			Album a = new Album(albumTitle);
-			if(c.getAlbum() != null) {
-				a = c.getAlbum();
-				a.setNom(albumTitle);
-			}
-			c.setAlbum(a);
-		} catch (CannotReadException | IOException | TagException | ReadOnlyFileException
-				| InvalidAudioFrameException e) {
-			System.out.println("Erreur lors de l'ouverture du .mp3 par JAudioTagger !");
-			e.printStackTrace();
-		} catch (CannotWriteException e) {
-			System.out.println("Erreur lors de l'écriture du .mp3 par JAudiotagger !");
-			e.printStackTrace();
-		}
-	}
-	
-	public static void setArtist(Chanson c, String artist) {
-		File mp3 = new File(c.getNomFichier());
-		try {
-			//modification du tag mp3
-			AudioFile af = AudioFileIO.read(mp3);
-			Tag tag = af.getTag();
-			tag.setField(FieldKey.ARTIST, artist);
-			af.commit();
-			
-			//Modification du nom de l'artiste
-			Artiste a = new Artiste(artist);
-			if(c.getArtiste() != null) {
-				a = c.getArtiste();
-				a.setNom(artist);
-			}
-			c.setArtiste(a);
-		} catch (CannotReadException | IOException | TagException | ReadOnlyFileException
-				| InvalidAudioFrameException e) {
-			System.out.println("Erreur lors de l'ouverture du .mp3 par JAudioTagger !");
-			e.printStackTrace();
-		} catch (CannotWriteException e) {
-			System.out.println("Erreur lors de l'écriture du .mp3 par JAudiotagger !");
-			e.printStackTrace();
-		}
-	}
-	
-	public static void setGenre(Chanson c, String genre) {
-		File mp3 = new File(c.getNomFichier());
-		try {
-			//modification du tag mp3
-			AudioFile af = AudioFileIO.read(mp3);
-			Tag tag = af.getTag();
-			tag.setField(FieldKey.GENRE, genre);
-			af.commit();
-			
-			//Modification du genre de la chanson
-			// TODO gérer les genres par rapport à la liste de la bdd
-			Genre g = new Genre(genre);
-			c.setGenre(g);
-		} catch (CannotReadException | IOException | TagException | ReadOnlyFileException
-				| InvalidAudioFrameException e) {
-			System.out.println("Erreur lors de l'ouverture du .mp3 par JAudioTagger !");
-			e.printStackTrace();
-		} catch (CannotWriteException e) {
-			System.out.println("Erreur lors de l'écriture du .mp3 par JAudiotagger !");
-			e.printStackTrace();
-		}
-	}*/
-
 }

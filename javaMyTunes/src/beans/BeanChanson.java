@@ -35,11 +35,16 @@ public class BeanChanson implements Serializable {
 	public String save() {
 		//DaoChansonJPA.getInstance().save(chanson);
 		//test importChanson avec tags
+		//TODO déplacer la musique dans le répertoire des musiques sur le serveur
 		DaoChansonJPA.getInstance().save(TagEdit.importChanson(chanson.getNomFichier()));
 		return "ChansonEnregistre";
 	}
 	
 	public String edit() {
+		//on remet à jour les tags et on met à jour la bdd
+		System.out.println(chanson);
+		TagEdit.exportTag(chanson);
+		DaoChansonJPA.commit();
 		return "ChansonModifie";
 	}
 	
