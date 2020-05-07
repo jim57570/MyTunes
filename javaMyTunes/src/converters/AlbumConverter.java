@@ -1,4 +1,4 @@
-package beans;
+package converters;
 
 import javax.el.ValueExpression;
 import javax.faces.component.UIComponent;
@@ -6,6 +6,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
+import beans.BeanAlbum;
 import objMetiers.Album;
 
 @FacesConverter(value="albumConverter")
@@ -26,7 +27,10 @@ public class AlbumConverter implements Converter {
 
 	@Override
 	public String getAsString(FacesContext ctx, UIComponent uiComponent, Object album) {
-		return String.valueOf(((Album)album).getId());
+		if(album == null)
+			return "-1";
+		else
+			return String.valueOf(((Album)album).getId());
 	}
 
 }

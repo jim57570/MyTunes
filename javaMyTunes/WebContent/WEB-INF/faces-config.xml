@@ -37,5 +37,13 @@
 			<to-view-id>/listeChansons.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>editChanson.xhtml</display-name>
+		<from-view-id>/editChanson.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>ChansonModifie</from-outcome>
+			<to-view-id>/listeChansons.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
 </faces-config>

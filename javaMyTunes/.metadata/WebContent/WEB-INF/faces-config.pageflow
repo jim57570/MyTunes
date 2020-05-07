@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15877306795490" configfile="/javaMyTunes/WebContent/WEB-INF/faces-config.xml">
   <nodes xsi:type="pageflow:PFPage" name="formChanson.xhtml" id="pf15879967222730" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15879967222731" path="/formChanson.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="listeChansons.xhtml" x="252" y="216" id="pf15879967222732" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf15879967222731" path="/listeChansons.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="listeChansons.xhtml" x="252" y="216" id="pf15879967222732" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf15879967222731 pf15888412229230" path="/listeChansons.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="editChanson.xhtml" id="pf15888412229231" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf15888412229230" path="/editChanson.xhtml"/>
   <links id="pf15879967222731" target="pf15879967222732" source="pf15879967222730" outcome="ChansonEnregistre"/>
+  <links id="pf15888412229230" target="pf15879967222732" source="pf15888412229231" outcome="ChansonModifie"/>
 </pageflow:Pageflow>

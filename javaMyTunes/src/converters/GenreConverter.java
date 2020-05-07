@@ -1,4 +1,4 @@
-package beans;
+package converters;
 
 import javax.el.ValueExpression;
 import javax.faces.component.UIComponent;
@@ -6,6 +6,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
+import beans.BeanGenre;
 import objMetiers.Genre;
 
 @FacesConverter(value="genreConverter")
