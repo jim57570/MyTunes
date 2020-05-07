@@ -37,17 +37,17 @@
 				<f:selectItems value="#{beanArtiste.artistes}" var="artiste" itemLabel="#{artiste.nom}" itemValue="#{artiste.id}" />
 				<f:validateRequired />
 			</h:selectOneMenu>
-			<!--
+			
 			<h:outputLabel value="Nom de l'album:" />
-			<h:selectOneMenu value="#{beanChanson.chanson.album.id}">
-				<f:selectItem itemLabel="Null" itemValue="null"></f:selectItem>
-				<f:selectItems value="#{beanAlbum.albums}" var="album" itemLabel="#{album.nom}" itemValue="#{album.id}" />
+			<h:selectOneMenu value="#{beanChanson.chanson.album}" converter="albumConverter">
+				<!--  <f:selectItem itemLabel="Null" itemValue="null"></f:selectItem> -->
+				<f:selectItems value="#{beanAlbum.albums}" var="album" itemLabel="#{album.nom}" itemValue="#{album}" />
 				<f:validateRequired />
-			</h:selectOneMenu> -->
+			</h:selectOneMenu>
 
 			<h:outputLabel value="Genre:" />
 			<h:selectOneMenu value="#{beanChanson.chanson.genre}" converter="genreConverter">
-				<!--  <f:selectItem itemLabel="Null" itemValue="null"></f:selectItem>-->
+				<f:selectItem itemLabel="Null" itemValue="#{null}"></f:selectItem>
 				<f:selectItems value="#{beanGenre.genres}" var="genre" itemLabel="#{genre.nom}" itemValue="#{genre}" />
 				<f:validateRequired />
 			</h:selectOneMenu>  

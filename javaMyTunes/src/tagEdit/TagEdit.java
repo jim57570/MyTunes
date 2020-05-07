@@ -117,16 +117,31 @@ public class TagEdit {
 				AudioFile af = AudioFileIO.read(mp3);
 				Tag tag = af.getTag();
 				//maj des tags
+				//tag titre
 				if(c.getTitre() != null)
 					tag.setField(FieldKey.TITLE, c.getTitre());
+				else
+					tag.setField(FieldKey.TITLE, "");
+				
+				//tag nom artiste
 				if(c.getArtiste() != null)
 					tag.setField(FieldKey.ARTIST, c.getArtiste().getNom());
+				else
+					tag.setField(FieldKey.ARTIST, "");
+				
+				//tag nom album
 				if(c.getAlbum() != null)
 					tag.setField(FieldKey.ALBUM, c.getAlbum().getNom());
+				else
+					tag.setField(FieldKey.ALBUM, "");
+				
+				//tag genre
 				if(c.getGenre() != null) {
 					String genre = "(" + (c.getGenre().getId()-1) + ")";
 					tag.setField(FieldKey.GENRE, genre); //Le tag du genre est sous la forme "(idGenre)" il faut donc ajouter les parenthèse et -1 par rappoert à la bdd
 				}
+				else
+					tag.setField(FieldKey.GENRE, "");
 				
 				af.setTag(tag);
 				af.commit();

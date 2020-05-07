@@ -27,7 +27,10 @@ public class GenreConverter implements Converter {
 
 	@Override
 	public String getAsString(FacesContext ctx, UIComponent uiComponent, Object genre) {
-		return String.valueOf(((Genre)genre).getId());
+		if(genre == null)
+			return "-1";
+		else
+			return String.valueOf(((Genre)genre).getId());
 	}
 
 }
