@@ -48,6 +48,11 @@
 			</h:column>
 			<h:column>
 				<f:facet name="header">Supprimer</f:facet>
+				<h:form>
+					<h:commandLink id="link" value="delete" binding="#{beanChanson.commandLink}" action="#{beanChanson.delete}">
+						<f:attribute name="chanson" value="#{chanson}" />
+					</h:commandLink>
+				</h:form>
 			</h:column>
 			<h:column>
 				<f:facet name="header">Audio</f:facet>

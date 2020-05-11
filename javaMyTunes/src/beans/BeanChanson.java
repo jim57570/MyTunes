@@ -3,6 +3,8 @@ package beans;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.faces.component.UIComponent;
+
 import dao.jpa.DaoChansonJPA;
 import objMetiers.Chanson;
 import tagEdit.TagEdit;
@@ -14,6 +16,8 @@ public class BeanChanson implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Chanson chanson = new Chanson();
+	
+	private UIComponent commandLink;
 	
 	public Chanson getChanson() {
 		return chanson;
@@ -48,8 +52,22 @@ public class BeanChanson implements Serializable {
 		return "ChansonModifie";
 	}
 	
+	public String delete() {
+		Chanson chanson = (Chanson)commandLink.getAttributes().get("chanson");
+		DaoChansonJPA.getInstance().remove(chanson);
+		return "ChansonSupprime";
+	}
+	
 	public List<Chanson> getChansons() {
 		return DaoChansonJPA.getInstance().loadAll();
+	}
+	
+	public UIComponent getCommandLink() {
+		return commandLink;
+	}
+	
+	public void setCommandLink(UIComponent commandLink) {
+		this.commandLink = commandLink;
 	}
 
 }
