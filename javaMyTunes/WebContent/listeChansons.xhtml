@@ -31,16 +31,22 @@
 				<f:facet name="header">Album</f:facet>
 				<h:outputLink value="listeChansonsAlbum.xhtml">
 					<h:outputText value="#{chanson.album.nom}"/>
-					<f:param name="idAlbum" value="#{chanson.album.id}"></f:param>
+					<f:param name="idAlbum" value="#{chanson.album.id}" />
 				</h:outputLink>
 			</h:column>
 			<h:column>
 				<f:facet name="header">Artiste</f:facet>
-				<h:outputText value="#{chanson.artiste.nom}"/>
+				<h:outputLink value="listeChansonsArtiste.xhtml">
+					<h:outputText value="#{chanson.artiste.nom}"/>
+					<f:param name="idArtiste" value="#{chanson.artiste.id}" />
+				</h:outputLink>
 			</h:column>
 			<h:column>
 				<f:facet name="header">Genre</f:facet>
-				<h:outputText value="#{chanson.genre.nom}"/>
+				<h:outputLink value="listeChansonsGenre.xhtml">
+					<h:outputText value="#{chanson.genre.nom}"/>
+					<f:param name="idGenre" value="#{chanson.genre.id}" />
+				</h:outputLink>
 			</h:column>
 			<h:column>
 				<f:facet name="header">Modifier</f:facet>

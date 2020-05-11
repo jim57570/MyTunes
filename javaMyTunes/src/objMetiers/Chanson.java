@@ -29,16 +29,15 @@ public class Chanson {
 	@Column(name="nomFichier")
 	private String nomFichier = null;
 	
-	// TEST MAPPING ALBUM
 	@ManyToOne //cardinalité 0,1 dans notre schéma E/A
 	@JoinColumn(name="idAlbum") //clé étrangère sur Album_id
 	private Album album = null;
 	
-	@OneToOne //cardinalité 0,1 dans notre schéma E/A
+	@ManyToOne //cardinalité 0,1 dans notre schéma E/A
 	@JoinColumn(name="idArtiste") //clé étrangère sur Artiste_id
 	private Artiste artiste = null;
 	
-	@OneToOne //cardinalité 0,1 dans notre schéma E/A
+	@ManyToOne //cardinalité 0,1 dans notre schéma E/A
 	@JoinColumn(name="idGenre") //clé étrangère sur Genre_id
 	private Genre genre = null;
 	

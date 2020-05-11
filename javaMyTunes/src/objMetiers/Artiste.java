@@ -1,10 +1,14 @@
 package objMetiers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,6 +22,9 @@ public class Artiste {
 	
 	@Column(name="nomArtiste")
 	private String nom = null;
+	
+	@OneToMany(mappedBy="artiste")
+	private List<Chanson> chansons = new ArrayList<Chanson>();
 
 	public Artiste() {
 		super();
@@ -48,6 +55,14 @@ public class Artiste {
 
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+	
+	public List<Chanson> getChansons() {
+		return chansons;
+	}
+
+	public void setChansons(List<Chanson> chansons) {
+		this.chansons = chansons;
 	}
 
 	@Override
