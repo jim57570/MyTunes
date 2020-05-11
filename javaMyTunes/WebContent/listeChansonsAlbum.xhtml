@@ -6,15 +6,20 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-	<title>Liste des chansons</title>
+	<title>Chansons d'un album</title>
 </h:head>
+
+<f:metadata>
+	<f:viewParam name="idAlbum" value="#{beanAlbum.idAlbum}" required="true" />
+</f:metadata>
+
 <h:body>
 	<div align="center">
-		<h1>Liste des chansons</h1>
+		<h1>Chansons d'un album</h1>
 		<p/>
 	</div>
 	<div align="center">
-		<h:dataTable border="1" value="#{beanChanson.chansons}" var="chanson">
+		<h:dataTable border="1" value="#{beanAlbum.album.chansons}" var="chanson">
 			<h:column>
 				<f:facet name="header">Id</f:facet>
 				<h:outputText value="#{chanson.id}"></h:outputText>
@@ -29,10 +34,7 @@
 			</h:column>
 			<h:column>
 				<f:facet name="header">Album</f:facet>
-				<h:outputLink value="listeChansonsAlbum.xhtml">
-					<h:outputText value="#{chanson.album.nom}"/>
-					<f:param name="idAlbum" value="#{chanson.album.id}"></f:param>
-				</h:outputLink>
+				<h:outputText value="#{chanson.album.nom}"/>
 			</h:column>
 			<h:column>
 				<f:facet name="header">Artiste</f:facet>
@@ -41,27 +43,6 @@
 			<h:column>
 				<f:facet name="header">Genre</f:facet>
 				<h:outputText value="#{chanson.genre.nom}"/>
-			</h:column>
-			<h:column>
-				<f:facet name="header">Modifier</f:facet>
-				<h:outputLink value="editChanson.xhtml">
-					<h:outputText value="edit"/>
-					<f:param name="idChanson" value="#{chanson.id}" />
-				</h:outputLink>
-			</h:column>
-			<h:column>
-				<f:facet name="header">Supprimer</f:facet>
-				<h:form>
-					<h:commandLink id="link" value="delete" binding="#{beanChanson.commandLink}" action="#{beanChanson.delete}">
-						<f:attribute name="chanson" value="#{chanson}" />
-					</h:commandLink>
-				</h:form>
-			</h:column>
-			<h:column>
-				<f:facet name="header">Audio</f:facet>
-				<audio controls="controls">
-					<source src="/javaMyTunes/01 Nappeux.mp3" />
-				</audio>
 			</h:column>
 		</h:dataTable>
 	</div>

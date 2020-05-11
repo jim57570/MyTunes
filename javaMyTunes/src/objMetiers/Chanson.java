@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -28,7 +29,8 @@ public class Chanson {
 	@Column(name="nomFichier")
 	private String nomFichier = null;
 	
-	@OneToOne //cardinalité 0,1 dans notre schéma E/A
+	// TEST MAPPING ALBUM
+	@ManyToOne //cardinalité 0,1 dans notre schéma E/A
 	@JoinColumn(name="idAlbum") //clé étrangère sur Album_id
 	private Album album = null;
 	
