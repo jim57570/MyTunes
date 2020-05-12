@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import objMetiers.Chanson;
 
 /**
@@ -8,4 +10,5 @@ import objMetiers.Chanson;
  *
  */
 public interface DaoChanson extends Dao<Chanson> {
+	List<Chanson> find(String nom); 
 }

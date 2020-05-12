@@ -1,6 +1,7 @@
 package beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.component.UIComponent;
@@ -18,6 +19,16 @@ public class BeanChanson implements Serializable {
 	private Chanson chanson = new Chanson();
 	
 	private UIComponent commandLink;
+	
+	private String recherche = "";
+	
+	public String getRecherche() {
+		return recherche;
+	}
+	
+	public void setRecherche(String recherche) {
+		this.recherche = recherche;
+	}
 	
 	public Chanson getChanson() {
 		return chanson;
@@ -59,7 +70,10 @@ public class BeanChanson implements Serializable {
 	}
 	
 	public List<Chanson> getChansons() {
-		return DaoChansonJPA.getInstance().loadAll();
+		if(recherche.equals(""))
+			return DaoChansonJPA.getInstance().loadAll();
+		else
+			return DaoChansonJPA.getInstance().find(recherche);
 	}
 	
 	public UIComponent getCommandLink() {

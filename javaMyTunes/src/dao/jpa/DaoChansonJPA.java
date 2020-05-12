@@ -41,6 +41,17 @@ public class DaoChansonJPA extends DaoJPA implements DaoChanson {
 		else
 			return listChanson.get(0); //Si la requête renvoie plusierus résultats, on prend le premier (choix arbitraire)
 	}
+	
+	//TODO A voir pour généraliser pour les autres objets
+	@Override
+	public List<Chanson> find(String nom) {
+		//requête JPQL avec un paramètre
+		List<Chanson> listChanson = DaoJPA.getManager()
+				.createQuery("SELECT c FROM Chanson c WHERE c.titre LIKE ?1", Chanson.class) //c.titre par rapport à l'objet métier et pas à la bdd !
+				.setParameter(1, nom)
+				.getResultList();
+		return listChanson;
+	}
 
 	@Override
 	public void save(Chanson o) {
