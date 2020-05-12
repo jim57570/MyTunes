@@ -64,16 +64,18 @@ public class BeanChanson implements Serializable {
 	}
 	
 	public String delete() {
+		//permet de récupérer l'objet chanson passé en paramètre pour la suppression
 		Chanson chanson = (Chanson)commandLink.getAttributes().get("chanson");
 		DaoChansonJPA.getInstance().remove(chanson);
 		return "ChansonSupprime";
 	}
 	
 	public List<Chanson> getChansons() {
-		if(recherche.equals(""))
-			return DaoChansonJPA.getInstance().loadAll();
-		else
-			return DaoChansonJPA.getInstance().find(recherche);
+		return DaoChansonJPA.getInstance().loadAll();
+	}
+	
+	public List<Chanson> getFind() {
+		return DaoChansonJPA.getInstance().find(recherche);
 	}
 	
 	public UIComponent getCommandLink() {
