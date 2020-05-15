@@ -26,6 +26,21 @@
 					<f:param name="idPlaylist" value="#{playlist.id}" />
 				</h:outputLink>
 			</h:column>
+			<h:column>
+				<f:facet name="header">Modifier</f:facet>
+				<h:outputLink value="editPlaylist.xhtml">
+					<h:outputText value="edit"/>
+					<f:param name="idPlaylist" value="#{playlist.id}" />
+				</h:outputLink>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Supprimer</f:facet>
+				<h:form>
+					<h:commandLink id="link" value="delete" binding="#{beanPlaylist.commandLink}" action="#{beanPlaylist.delete}">
+						<f:attribute name="playlist" value="#{playlist}" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
 		</h:dataTable>
 	</div>
 </h:body>

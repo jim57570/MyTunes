@@ -45,5 +45,20 @@
 			<to-view-id>/listeChansons.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-
+	<navigation-rule>
+		<display-name>formPlaylist.xhtml</display-name>
+		<from-view-id>/formPlaylist.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>PlaylistEnregistre</from-outcome>
+			<to-view-id>/listePlaylist.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>editPlaylist.xhtml</display-name>
+		<from-view-id>/editPlaylist.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>PlaylistModifie</from-outcome>
+			<to-view-id>/listePlaylist.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 </faces-config>
