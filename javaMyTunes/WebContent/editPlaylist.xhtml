@@ -26,7 +26,7 @@
 			</h:inputText>
 			
 			<h:outputLabel value="Ajouter une chanson:" />
-			<h:selectOneMenu converter="chansonConverter">
+			<h:selectOneMenu converter="chansonConverter" value="#{beanPlaylist.chansonToAdd}">
 				<f:selectItems name="chansonAdd" value="#{beanChanson.chansons}" var="chanson" itemLabel="#{chanson.titre}" itemValue="#{chanson}" />
 			</h:selectOneMenu>
 			<h:commandButton value="Ajouter" action="#{beanPlaylist.addChanson}">

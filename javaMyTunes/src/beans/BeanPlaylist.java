@@ -16,6 +16,8 @@ public class BeanPlaylist implements Serializable {
 	
 	private Playlist playlist = new Playlist();
 	
+	private Chanson chansonToAdd = new Chanson();
+	
 	private UIComponent commandLink;
 	
 	private UIComponent chansonLink;
@@ -53,6 +55,14 @@ public class BeanPlaylist implements Serializable {
 		this.chansonLink = chansonLink;
 	}
 	
+	public Chanson getChansonToAdd() {
+		return chansonToAdd;
+	}
+	
+	public void setChansonToAdd(Chanson chanson) {
+		this.chansonToAdd = chanson;
+	}
+	
 	public String save() {
 		DaoPlaylistJPA.getInstance().save(playlist);
 		return "PlaylistEnregistre";
@@ -81,9 +91,9 @@ public class BeanPlaylist implements Serializable {
 	}
 	
 	public String addChanson() {
-		Chanson chanson = (Chanson)chansonLink.getAttributes().get("chansonAdd");
-		System.out.println(chanson);
-		this.playlist.getContient().add(chanson);
+		//Chanson chanson = (Chanson)chansonLink.getAttributes().get("chansonAdd");
+		System.out.println(chansonToAdd);
+		this.playlist.getContient().add(chansonToAdd);
 		return "ChansonPlaylistAjoute";
 	}
 	
