@@ -16,7 +16,7 @@
 			<a class="navbar-brand">MyTunes</a>
 			<div class="navbar-collapse collapse" style="">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active"><a class="nav-link">Chansons</a></li>
+					<li class="nav-item active"><a href="listeChansons.xhtml" class="nav-link">Chansons</a></li>
 					<li class="nav-item"><a class="nav-link">Playlists</a></li>
 					<li class="nav-item"><a class="nav-link">Albums</a></li>
 					<li class="nav-item"><a class="nav-link">Artistes</a></li>
@@ -39,7 +39,7 @@
 			<div class="container text-left">
 				<h:outputLink value="formChanson.xhtml">
 					<h:graphicImage value="/resources/icons/plus-square.svg"></h:graphicImage>
-					<h:outputText class="text-secondary" value="Ajouter une chanson" />
+					<h:outputText class="text-secondary" value="  Ajouter une chanson" />
 				</h:outputLink>
 			</div>
 			<div class="container">
@@ -82,17 +82,16 @@
 					<h:column>
 						<f:facet name="header">Modifier</f:facet>
 						<h:outputLink value="editChanson.xhtml">
-							<h:graphicImage value="/resources/icons/pencil-square.svg"></h:graphicImage>
+							<h:graphicImage value="/resources/icons/pencil-square.svg" />
 							<f:param name="idChanson" value="#{chanson.id}" />
 						</h:outputLink>
 					</h:column>
 					<h:column>
 						<f:facet name="header">Supprimer</f:facet>
 						<h:form>
-							<h:commandLink id="link" binding="#{beanChanson.commandLink}" action="#{beanChanson.delete}">
-								<h:graphicImage value="/resources/icons/trash.svg"></h:graphicImage>
+							<h:commandButton id="link" image="/resources/icons/trash.svg" binding="#{beanChanson.commandLink}" action="#{beanChanson.delete}">
 								<f:attribute name="chanson" value="#{chanson}" />
-							</h:commandLink>
+							</h:commandButton>
 						</h:form>
 					</h:column>
 					<h:column>
@@ -103,11 +102,7 @@
 					</h:column>
 				</h:dataTable>
 			</div>
-		</section>	
-	</main>
-	
-	
-
-	
+		</section>
+	</main>	
 </h:body>
 </html>
