@@ -6,42 +6,74 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-	<title>Liste des playlist</title>
+	<title>MyTunes - Liste des playlists</title>
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
 </h:head>
 <h:body>
-	<div align="center">
-		<h1>Liste des playlist</h1>
-		<p/>
-	</div>
-	<div align="center">
-		<h:dataTable border="1" value="#{beanPlaylist.playlists}" var="playlist">
-			<h:column>
-				<f:facet name="header">Id</f:facet>
-				<h:outputText value="#{playlist.id}"></h:outputText>
-			</h:column>
-			<h:column>
-				<f:facet name="header">Nom playlist</f:facet>
-				<h:outputLink value="listeChansonsPlaylist.xhtml">
-					<h:outputText value="#{playlist.nom}"/>
-					<f:param name="idPlaylist" value="#{playlist.id}" />
-				</h:outputLink>
-			</h:column>
-			<h:column>
-				<f:facet name="header">Modifier</f:facet>
-				<h:outputLink value="editPlaylist.xhtml">
-					<h:outputText value="edit"/>
-					<f:param name="idPlaylist" value="#{playlist.id}" />
-				</h:outputLink>
-			</h:column>
-			<h:column>
-				<f:facet name="header">Supprimer</f:facet>
-				<h:form>
-					<h:commandLink id="link" value="delete" binding="#{beanPlaylist.commandLink}" action="#{beanPlaylist.delete}">
-						<f:attribute name="playlist" value="#{playlist}" />
-					</h:commandLink>
+	<header>
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+			<a class="navbar-brand">MyTunes</a>
+			<div class="navbar-collapse collapse" style="">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item"><a href="listeChansons.xhtml" class="nav-link">Chansons</a></li>
+					<li class="nav-item active"><a href="listePlaylist.xhtml" class="nav-link">Playlists</a></li>
+					<li class="nav-item"><a class="nav-link">Albums</a></li>
+					<li class="nav-item"><a class="nav-link">Artistes</a></li>
+					<li class="nav-item"><a href="listeGenres.xhtml" class="nav-link">Genres</a></li>
+				</ul>
+				<h:form id="form_recherche" class="form-inline my-2 my-lg-0">
+					<h:inputText id="recherche" class="form-control mr-sm-2" placeholder="Recherche" value="#{beanChanson.recherche}">
+						<f:validateRequired />
+					</h:inputText>
+					<h:commandButton class="btn btn-secondary my-2 my-sm-0" value="Rechercher" action="rechercheChansons.xhtml">
+						<f:param name="recherche" value="#{beanChanson.recherche}" />
+					</h:commandButton>
 				</h:form>
-			</h:column>
-		</h:dataTable>
-	</div>
+			</div>
+		</nav>
+	</header>
+	
+	<main role="main">
+		<section class="jumbotron text-center bg-light">
+			<div class="container text-left">
+				<h:outputLink value="formPlaylist.xhtml">
+					<h:graphicImage value="/resources/icons/plus-square.svg"></h:graphicImage>
+					<h:outputText class="text-secondary" value="  Ajouter une playlist" />
+				</h:outputLink>
+			</div>
+			<div class="container">
+				<h1>Liste des playlists</h1>
+				
+				<h:dataTable class="table table-striped" value="#{beanPlaylist.playlists}" var="playlist">
+					<h:column>
+						<f:facet name="header">#</f:facet>
+						<h:outputText value="#{playlist.id}"></h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Nom playlist</f:facet>
+						<h:outputLink value="listeChansonsPlaylist.xhtml">
+							<h:outputText class="text-secondary" value="#{playlist.nom}"/>
+							<f:param name="idPlaylist" value="#{playlist.id}" />
+						</h:outputLink>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Modifier</f:facet>
+						<h:outputLink value="editPlaylist.xhtml">
+							<h:graphicImage value="/resources/icons/pencil-square.svg" />
+							<f:param name="idPlaylist" value="#{playlist.id}" />
+						</h:outputLink>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Supprimer</f:facet>
+						<h:form>
+							<h:commandButton id="link" image="/resources/icons/trash.svg" binding="#{beanPlaylist.commandLink}" action="#{beanPlaylist.delete}">
+								<f:attribute name="playlist" value="#{playlist}" />
+							</h:commandButton>
+						</h:form>
+					</h:column>
+				</h:dataTable>
+			</div>
+		</section>
+	</main>
 </h:body>
 </html>
