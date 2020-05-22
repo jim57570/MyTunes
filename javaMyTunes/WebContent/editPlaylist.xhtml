@@ -6,7 +6,8 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-	<title>Modification d'une playlist</title>
+	<title>MyTunes - Modification d'une playlist</title>
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
 </h:head>
 
 <f:metadata>
@@ -14,50 +15,79 @@
 </f:metadata>
 
 <h:body>
-	<div align="center">
-		<h1>
-			<h:outputText value="Modification d'un playlist" />
-		</h1>
-		
-		<h:form id="Form_edit_playlist">
-			<h:outputLabel value="Nom de la playlist:" />
-			<h:inputText id="Nom_Playlist" value="#{beanPlaylist.playlist.nom}">
-				<f:validateRequired />
-			</h:inputText>
-			
-			<h:outputLabel value="Ajouter une chanson:" />
-			<h:selectOneMenu converter="chansonConverter" value="#{beanPlaylist.chansonToAdd}">
-				<f:selectItems name="chansonAdd" value="#{beanChanson.chansons}" var="chanson" itemLabel="#{chanson.titre}" itemValue="#{chanson}" />
-			</h:selectOneMenu>
-			<h:commandButton value="Ajouter" action="#{beanPlaylist.addChanson}">
-			</h:commandButton>
-			
-			<h:dataTable border="1" value="#{beanPlaylist.playlist.contient}" var="chanson">
-				<h:column>
-					<f:facet name="header">Id</f:facet>
-					<h:outputText value="#{chanson.id}"></h:outputText>
-				</h:column>
-				<h:column>
-					<f:facet name="header">Titre</f:facet>
-					<h:outputText value="#{chanson.titre}"/>
-				</h:column>
-				<h:column>
-					<f:facet name="header">Nom du fichier</f:facet>
-					<h:outputText value="#{chanson.nomFichier}"/>
-				</h:column>
-				<h:column>
-					<f:facet name="header">Supprimer</f:facet>
-					<h:commandLink id="link" value="delete" binding="#{beanPlaylist.chansonLink}" action="#{beanPlaylist.deleteChanson}">
-						<f:attribute name="chanson" value="#{chanson}" />
-					</h:commandLink>
-				</h:column>
-			</h:dataTable>
-			
-			<h:commandButton value="Enregistrer" type="submit" action="#{beanPlaylist.edit}"></h:commandButton>
-			
-			<h:commandButton value="Retour au menu" type="reset"></h:commandButton>
-			
-		</h:form>
-	</div>
+	<header>
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+			<a class="navbar-brand">MyTunes</a>
+			<div class="navbar-collapse collapse" style="">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item"><a href="listeChansons.xhtml" class="nav-link">Chansons</a></li>
+					<li class="nav-item active"><a href="listePlaylist.xhtml" class="nav-link">Playlists</a></li>
+					<li class="nav-item"><a class="nav-link">Albums</a></li>
+					<li class="nav-item"><a class="nav-link">Artistes</a></li>
+					<li class="nav-item"><a href="listeGenres.xhtml" class="nav-link">Genres</a></li>
+				</ul>
+				<h:form id="form_recherche" class="form-inline my-2 my-lg-0">
+					<h:inputText id="recherche" class="form-control mr-sm-2" placeholder="Recherche" value="#{beanChanson.recherche}">
+						<f:validateRequired />
+					</h:inputText>
+					<h:commandButton class="btn btn-secondary my-2 my-sm-0" value="Rechercher" action="rechercheChansons.xhtml">
+						<f:param name="recherche" value="#{beanChanson.recherche}" />
+					</h:commandButton>
+				</h:form>
+			</div>
+		</nav>
+	</header>
+
+	<main role="main">
+		<section class="jumbotron text-center bg-light">
+			<div class="container">
+				<h1>Modification de la playlist : <h:outputText value="#{beanPlaylist.playlist.nom}" /></h1>
+			</div>
+			<div class="container">
+				<h:form id="Form_edit_playlist">
+					<div class="form-group row">
+						<h:outputLabel value="Nom de la playlist:" />
+						<h:inputText class="form-control" id="Nom_Playlist" value="#{beanPlaylist.playlist.nom}">
+							<f:validateRequired />
+						</h:inputText>
+					</div>
+					<div class="form-group row">
+						<h:outputLabel value="Ajouter une chanson:" />
+						<h:selectOneMenu class="custom-select" converter="chansonConverter" value="#{beanPlaylist.chansonToAdd}">
+							<f:selectItems name="chansonAdd" value="#{beanChanson.chansons}" var="chanson" itemLabel="#{chanson.titre}" itemValue="#{chanson}" />
+						</h:selectOneMenu>
+						<h:commandButton class="btn btn-primary" value="Ajouter" action="#{beanPlaylist.addChanson}"></h:commandButton>
+					</div>
+					<div class="form-group row">
+						<h:dataTable class="table table-striped" border="1" value="#{beanPlaylist.playlist.contient}" var="chanson">
+							<h:column>
+								<f:facet name="header">#</f:facet>
+								<h:outputText value="#{chanson.id}"></h:outputText>
+							</h:column>
+							<h:column>
+								<f:facet name="header">Titre</f:facet>
+								<h:outputText value="#{chanson.titre}"/>
+							</h:column>
+							<h:column>
+								<f:facet name="header">Nom du fichier</f:facet>
+								<h:outputText value="#{chanson.nomFichier}"/>
+							</h:column>
+							<h:column>
+								<f:facet name="header">Supprimer</f:facet>
+								<h:commandButton id="link" image="/resources/icons/trash.svg" binding="#{beanPlaylist.chansonLink}" action="#{beanPlaylist.deleteChanson}">
+									<f:attribute name="chanson" value="#{chanson}" />
+								</h:commandButton>
+							</h:column>
+						</h:dataTable>
+					</div>
+					<div class="form-group">
+						<h:commandButton class="btn btn-primary" value="Enregistrer" type="submit" action="#{beanPlaylist.edit}"></h:commandButton>
+						<h:outputText value=" " />
+						<h:commandButton class="btn btn-secondary" value="Retour au menu" action="listePlaylist.xhtml"></h:commandButton>
+					</div>
+				</h:form>
+			</div>
+		</section>
+	</main>
 </h:body>
 </html>

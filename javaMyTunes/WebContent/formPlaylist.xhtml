@@ -39,15 +39,14 @@
 				<h1>Ajout d'une playlist</h1>
 				
 				<h:form id="Form_playlist">
-			
-					<h:outputLabel value="Nom de la playlist:" />
-					
-					<h:inputText id="Nom_playlist" value="#{beanPlaylist.playlist.nom}">
-						<f:validateRequired />
-					</h:inputText>
-					
+					<div class="form-group row">
+						<h:outputLabel value="Nom de la playlist:" />
+						<h:inputText class="form-control" id="Nom_playlist" value="#{beanPlaylist.playlist.nom}">
+							<f:validateRequired />
+						</h:inputText>
+					</div>
 					<h:commandButton class="btn btn-primary" value="Enregistrer" type="submit" action="#{beanPlaylist.save}"></h:commandButton>
-					
+					<h:outputText value=" " />
 					<h:commandButton class="btn btn-secondary" value="Retour au menu" action="listePlaylist.xhtml"></h:commandButton>
 					
 				</h:form>

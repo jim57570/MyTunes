@@ -40,17 +40,17 @@
 				<h1>Ajout d'une chanson</h1>
 				
 				<h:form id="Form_chanson">
-			
-					<h:outputLabel value="Nom du fichier:" />
+					<div class="form-group row">
 					
-					<h:inputText id="Nom_Fichier_Chanson" value="#{beanChanson.chanson.nomFichier}">
-						<f:validateRequired />
-					</h:inputText>
-					
+						<h:outputLabel value="Nom du fichier:" />
+						
+						<h:inputText class="form-control" id="Nom_Fichier_Chanson" value="#{beanChanson.chanson.nomFichier}">
+							<f:validateRequired />
+						</h:inputText>
+					</div>	
 					<h:commandButton class="btn btn-primary" value="Enregistrer" type="submit" action="#{beanChanson.save}"></h:commandButton>
-					
+					<h:outputText value=" " />
 					<h:commandButton class ="btn btn-secondary" value="Retour au menu" action="listeChansons.xhtml"></h:commandButton>
-					
 				</h:form>
 			</div>
 		</section>
