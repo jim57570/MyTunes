@@ -6,7 +6,8 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-	<title>Chansons d'un album</title>
+	<title>MyTunes - Chansons d'un album</title>
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
 </h:head>
 
 <f:metadata>
@@ -14,37 +15,92 @@
 </f:metadata>
 
 <h:body>
-	<div align="center">
-		<h1>Chansons d'un album</h1>
-		<p/>
-	</div>
-	<div align="center">
-		<h:dataTable border="1" value="#{beanAlbum.album.chansons}" var="chanson">
-			<h:column>
-				<f:facet name="header">Id</f:facet>
-				<h:outputText value="#{chanson.id}"></h:outputText>
-			</h:column>
-			<h:column>
-				<f:facet name="header">Titre</f:facet>
-				<h:outputText value="#{chanson.titre}"/>
-			</h:column>
-			<h:column>
-				<f:facet name="header">Nom du fichier</f:facet>
-				<h:outputText value="#{chanson.nomFichier}"/>
-			</h:column>
-			<h:column>
-				<f:facet name="header">Album</f:facet>
-				<h:outputText value="#{chanson.album.nom}"/>
-			</h:column>
-			<h:column>
-				<f:facet name="header">Artiste</f:facet>
-				<h:outputText value="#{chanson.artiste.nom}"/>
-			</h:column>
-			<h:column>
-				<f:facet name="header">Genre</f:facet>
-				<h:outputText value="#{chanson.genre.nom}"/>
-			</h:column>
-		</h:dataTable>
-	</div>
+	<header>
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+			<a class="navbar-brand">MyTunes</a>
+			<div class="navbar-collapse collapse" style="">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><a href="listeChansons.xhtml" class="nav-link">Chansons</a></li>
+					<li class="nav-item"><a href="listePlaylist.xhtml" class="nav-link">Playlists</a></li>
+					<li class="nav-item"><a class="nav-link">Albums</a></li>
+					<li class="nav-item"><a class="nav-link">Artistes</a></li>
+					<li class="nav-item"><a href="listeGenres.xhtml" class="nav-link">Genres</a></li>
+				</ul>
+				<h:form id="form_recherche" class="form-inline my-2 my-lg-0">
+					<h:inputText id="recherche" class="form-control mr-sm-2" placeholder="Recherche" value="#{beanChanson.recherche}">
+						<f:validateRequired />
+					</h:inputText>
+					<h:commandButton class="btn btn-secondary my-2 my-sm-0" value="Rechercher" action="rechercheChansons.xhtml">
+						<f:param name="recherche" value="#{beanChanson.recherche}" />
+					</h:commandButton>
+				</h:form>
+			</div>
+		</nav>
+	</header>
+	
+	<main role="main">
+		<section class="jumbotron text-center bg-light">
+			<div class="container">
+				<h1>Chansons de l'album : <h:outputText value="#{beanAlbum.album.nom}" /></h1>
+			
+				<h:dataTable class="table table-striped" value="#{beanAlbum.album.chansons}" var="chanson">
+					<h:column>
+						<f:facet name="header">#</f:facet>
+						<h:outputText value="#{chanson.id}"></h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Titre</f:facet>
+						<h:outputText value="#{chanson.titre}"/>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Nom du fichier</f:facet>
+						<h:outputText value="#{chanson.nomFichier}"/>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Album</f:facet>
+						<h:outputLink value="listeChansonsAlbum.xhtml">
+							<h:outputText class="text-secondary" value="#{chanson.album.nom}"/>
+							<f:param name="idAlbum" value="#{chanson.album.id}" />
+						</h:outputLink>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Artiste</f:facet>
+						<h:outputLink value="listeChansonsArtiste.xhtml">
+							<h:outputText class="text-secondary" value="#{chanson.artiste.nom}"/>
+							<f:param name="idArtiste" value="#{chanson.artiste.id}" />
+						</h:outputLink>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Genre</f:facet>
+						<h:outputLink value="listeChansonsGenre.xhtml">
+							<h:outputText class="text-secondary" value="#{chanson.genre.nom}"/>
+							<f:param name="idGenre" value="#{chanson.genre.id}" />
+						</h:outputLink>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Modifier</f:facet>
+						<h:outputLink value="editChanson.xhtml">
+							<h:graphicImage value="/resources/icons/pencil-square.svg" />
+							<f:param name="idChanson" value="#{chanson.id}" />
+						</h:outputLink>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Supprimer</f:facet>
+						<h:form>
+							<h:commandButton id="link" image="/resources/icons/trash.svg" binding="#{beanChanson.commandLink}" action="#{beanChanson.delete}">
+								<f:attribute name="chanson" value="#{chanson}" />
+							</h:commandButton>
+						</h:form>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Audio</f:facet>
+						<audio controls="controls">
+							<source src="/javaMyTunes/01 Nappeux.mp3" />
+						</audio>
+					</h:column>
+				</h:dataTable>
+			</div>
+		</section>
+	</main>
 </h:body>
 </html>
