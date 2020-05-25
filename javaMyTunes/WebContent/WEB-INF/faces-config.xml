@@ -61,4 +61,20 @@
 			<to-view-id>/listePlaylist.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>editAlbum.xhtml</display-name>
+		<from-view-id>/editAlbum.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>AlbumModifie</from-outcome>
+			<to-view-id>/listeAlbums.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>editArtiste.xhtml</display-name>
+		<from-view-id>/editArtiste.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>ArtisteModifie</from-outcome>
+			<to-view-id>/listeArtistes.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 </faces-config>

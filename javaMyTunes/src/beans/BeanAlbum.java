@@ -35,5 +35,13 @@ public class BeanAlbum implements Serializable {
 	public List<Album> getAlbums() {
 		return DaoAlbumJPA.getInstance().loadAll();
 	}
+	
+	public String edit() {
+		//on remet à jour la bdd
+		//TODO mettre à jour également les tags ayant comme nom cette album !!
+		System.out.println(album);
+		DaoAlbumJPA.commit();
+		return "AlbumModifie";
+	}
 
 }

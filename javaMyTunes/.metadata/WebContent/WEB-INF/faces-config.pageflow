@@ -3,11 +3,14 @@
   <nodes xsi:type="pageflow:PFPage" name="formChanson.xhtml" id="pf15879967222730" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15879967222731" path="/formChanson.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="listeChansons.xhtml" x="252" y="216" id="pf15879967222732" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf15879967222731 pf15888412229230" path="/listeChansons.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="editChanson.xhtml" id="pf15888412229231" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf15888412229230" path="/editChanson.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="formPlaylist.xhtml" id="pf15893607390910" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf15893607390911" path="/formPlaylist.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="formPlaylist.xhtml" id="pf15893607390910" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf15893607390911" path="/formPlaylist.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="listePlaylist.xhtml" id="pf15893607390912" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" inlinks="pf15893607390911 pf15895527301370" path="/listePlaylist.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="editPlaylist.xhtml" id="pf15895527301371" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf15895527301370" path="/editPlaylist.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="editAlbum.xhtml" id="pf15904145474040" referenceLink="//@navigationRule.4/@fromViewId|" outlinks="pf15904145474041" path="/editAlbum.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="listeAlbums.xhtml" id="pf15904145474042" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" inlinks="pf15904145474041" path="/listeAlbums.xhtml"/>
   <links id="pf15879967222731" target="pf15879967222732" source="pf15879967222730" outcome="ChansonEnregistre"/>
   <links id="pf15888412229230" target="pf15879967222732" source="pf15888412229231" outcome="ChansonModifie"/>
   <links id="pf15893607390911" target="pf15893607390912" source="pf15893607390910" outcome="PlaylistEnregistre"/>
   <links id="pf15895527301370" target="pf15893607390912" source="pf15895527301371" outcome="PlaylistModifie"/>
+  <links id="pf15904145474041" target="pf15904145474042" source="pf15904145474040" outcome="AlbumModifie"/>
 </pageflow:Pageflow>

@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<title>MyTunes - Modification de l'artiste</title>
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+</h:head>
+
+<f:metadata>
+	<f:viewParam name="idArtiste" value="#{beanArtiste.idArtiste}" required="true" />
+</f:metadata>
+
+<h:body>
+	<header>
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+			<a class="navbar-brand">MyTunes</a>
+			<div class="navbar-collapse collapse" style="">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item"><a href="listeChansons.xhtml" class="nav-link">Chansons</a></li>
+					<li class="nav-item"><a href="listePlaylist.xhtml" class="nav-link">Playlists</a></li>
+					<li class="nav-item"><a href="listeAlbums.xhtml" class="nav-link">Albums</a></li>
+					<li class="nav-item active"><a href="listeArtistes.xhtml" class="nav-link">Artistes</a></li>
+					<li class="nav-item"><a href="listeGenres.xhtml" class="nav-link">Genres</a></li>
+				</ul>
+				<h:form id="form_recherche" class="form-inline my-2 my-lg-0">
+					<h:inputText id="recherche" class="form-control mr-sm-2" placeholder="Recherche" value="#{beanChanson.recherche}">
+						<f:validateRequired />
+					</h:inputText>
+					<h:commandButton class="btn btn-secondary my-2 my-sm-0" value="Rechercher" action="rechercheChansons.xhtml">
+						<f:param name="recherche" value="#{beanChanson.recherche}" />
+					</h:commandButton>
+				</h:form>
+			</div>
+		</nav>
+	</header>
+	
+	<main role="main">
+		<section class="jumbotron text-center bg-light">
+			<div class="container">
+				<h1>Modification de l'artiste : <h:outputText value="#{beanArtiste.artiste.nom}" /></h1>
+				
+				<h:form id="Form_edit_artiste">
+					<div class="form-group row">
+						<h:outputLabel value="Nom de l'artiste:" />
+						<h:inputText class="form-control" id="nom_Artiste" value="#{beanArtiste.artiste.nom}">
+							<f:validateRequired />
+						</h:inputText>
+						<h:commandButton class="btn btn-primary" value="Enregistrer" type="submit" action="#{beanArtiste.edit}"></h:commandButton>
+						<h:outputText value=" " />
+						<h:commandButton class="btn btn-secondary" value="Retour au menu" action="listeArtistes.xhtml"></h:commandButton>
+					</div>
+				</h:form>
+			</div>
+		</section>
+	</main>
+</h:body>
+</html>

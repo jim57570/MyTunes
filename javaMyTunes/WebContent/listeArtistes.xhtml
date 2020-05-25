@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<title>MyTunes - Liste des artistes</title>
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+</h:head>
+
+<h:body>
+	<header>
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+			<a class="navbar-brand">MyTunes</a>
+			<div class="navbar-collapse collapse" style="">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item"><a href="listeChansons.xhtml" class="nav-link">Chansons</a></li>
+					<li class="nav-item"><a href="listePlaylist.xhtml" class="nav-link">Playlists</a></li>
+					<li class="nav-item"><a href="listeAlbums.xhtml" class="nav-link">Albums</a></li>
+					<li class="nav-item active"><a href="listeArtistes.xhtml" class="nav-link">Artistes</a></li>
+					<li class="nav-item"><a href="listeGenres.xhtml" class="nav-link">Genres</a></li>
+				</ul>
+				<h:form id="form_recherche" class="form-inline my-2 my-lg-0">
+					<h:inputText id="recherche" class="form-control mr-sm-2" placeholder="Recherche" value="#{beanChanson.recherche}">
+						<f:validateRequired />
+					</h:inputText>
+					<h:commandButton class="btn btn-secondary my-2 my-sm-0" value="Rechercher" action="rechercheChansons.xhtml">
+						<f:param name="recherche" value="#{beanChanson.recherche}" />
+					</h:commandButton>
+				</h:form>
+			</div>
+		</nav>
+	</header>
+	
+	<main role="main">
+		<section class="jumbotron text-center bg-light">
+			<div class="container">
+				<h1>Liste des artistes</h1>
+				
+				<h:dataTable class="table table-striped" value="#{beanArtiste.artistes}" var="artiste">
+					<h:column>
+						<f:facet name="header">#</f:facet>
+						<h:outputText value="#{artiste.id}"></h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Nom de l'artiste</f:facet>
+						<h:outputText value="#{artiste.nom}"></h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Modifier</f:facet>
+						<h:outputLink value="editArtiste.xhtml">
+							<h:graphicImage value="/resources/icons/pencil-square.svg" />
+							<f:param name="idArtiste" value="#{artiste.id}" />
+						</h:outputLink>
+					</h:column>
+				</h:dataTable>
+			</div>
+		</section>
+	</main>
+</h:body>
+</html>

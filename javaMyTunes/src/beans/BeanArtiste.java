@@ -35,5 +35,13 @@ public class BeanArtiste implements Serializable {
 	public List<Artiste> getArtistes() {
 		return DaoArtisteJPA.getInstance().loadAll();
 	}
+	
+	public String edit() {
+		//on met à jour la bdd
+		//TODO mettre à jour les tags concerné par l'artiste modifié
+		System.out.println(artiste);
+		DaoArtisteJPA.commit();
+		return "ArtisteModifie";
+	}
 
 }
