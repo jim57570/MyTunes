@@ -4,7 +4,10 @@ import java.io.Serializable;
 import java.util.List;
 
 import dao.jpa.DaoArtisteJPA;
+import dao.jpa.DaoChansonJPA;
 import objMetiers.Artiste;
+import objMetiers.Chanson;
+import tagEdit.TagEdit;
 
 public class BeanArtiste implements Serializable {
 
@@ -40,6 +43,12 @@ public class BeanArtiste implements Serializable {
 		//on met à jour la bdd
 		//TODO mettre à jour les tags concerné par l'artiste modifié
 		System.out.println(artiste);
+		
+		List<Chanson> listChanson = DaoChansonJPA.getInstance().loadAll();
+		for(int i=0; i<listChanson.size(); i++) {
+			TagEdit.exportTag(listChanson.get(i));
+		}
+		
 		DaoArtisteJPA.commit();
 		return "ArtisteModifie";
 	}

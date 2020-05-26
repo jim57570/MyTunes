@@ -2,6 +2,9 @@ package tagEdit;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
@@ -20,6 +23,7 @@ import dao.DaoArtiste;
 import dao.DaoGenre;
 import dao.jpa.DaoAlbumJPA;
 import dao.jpa.DaoArtisteJPA;
+import dao.jpa.DaoChansonJPA;
 import dao.jpa.DaoGenreJPA;
 import objMetiers.Album;
 import objMetiers.Artiste;
@@ -33,6 +37,8 @@ import objMetiers.Genre;
  */
 public class TagEdit {
 	
+	private static String serverPath = "/home/jim/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/javaMyTunes/resources/audio/";
+	
 	public static Chanson importChanson(String path) {
 		// TODO déplacer le mp3 dans le dossier choisi
 		// TODO modifier la fonction pour prendre en paramètre un objet chanson
@@ -42,11 +48,20 @@ public class TagEdit {
 		DaoArtiste daoArtiste = DaoArtisteJPA.getInstance();
 		DaoGenre daoGenre = DaoGenreJPA.getInstance();
 		
+		Path sourcePath = Path.of(path);
+		Path destPath = Path.of(serverPath+sourcePath.getFileName());
+		System.out.println(sourcePath.getFileName().toString());
+		try {
+			Files.copy(sourcePath, destPath, StandardCopyOption.COPY_ATTRIBUTES);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		
 		File mp3 = new File(path);
 		if(mp3.exists()) {
-			c.setNomFichier(path);
+			c.setNomFichier(sourcePath.getFileName().toString());
 			try {
 				//on recupère les tags du fichier .mp3
 				AudioFile af = AudioFileIO.read(mp3);
@@ -111,8 +126,12 @@ public class TagEdit {
 	}
 	
 	public static void exportTag(Chanson c) {
-		File mp3 = new File(c.getNomFichier());
+		//on récupère le nom original du fichier avant de le renommer
+		String originalName = DaoChansonJPA.getInstance().get(c.getId()).getNomFichier();
+		System.out.println("Original Name: " + originalName);
+		File mp3 = new File(serverPath+originalName);
 		if(mp3.exists()) {
+			mp3.renameTo(new File(serverPath+c.getNomFichier()));
 			try {
 				AudioFile af = AudioFileIO.read(mp3);
 				Tag tag = af.getTag();
@@ -156,6 +175,14 @@ public class TagEdit {
 		}
 		else {
 			System.out.println("Fichier inexistant !");
+		}
+	}
+	
+	//permet de supprimer une chanson sur le serveur
+	public static void removeChanson(Chanson chanson) {
+		File mp3 = new File(serverPath+chanson.getNomFichier());
+		if(mp3.exists()) {
+			mp3.delete();
 		}
 	}
 }
