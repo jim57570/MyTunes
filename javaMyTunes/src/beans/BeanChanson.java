@@ -22,6 +22,8 @@ public class BeanChanson implements Serializable {
 	
 	private String recherche = "";
 	
+	private String songName = "";
+	
 	public String getRecherche() {
 		return recherche;
 	}
@@ -45,6 +47,7 @@ public class BeanChanson implements Serializable {
 	public void setIdChanson(int id) {
 		System.out.println("Chanson = " + id);
 		chanson = DaoChansonJPA.getInstance().get(id);
+		songName = chanson.getNomFichier();
 	}
 	
 	public String save() {
@@ -58,7 +61,7 @@ public class BeanChanson implements Serializable {
 	public String edit() {
 		//on remet à jour les tags et on met à jour la bdd
 		System.out.println(chanson);
-		TagEdit.exportTag(chanson);
+		TagEdit.exportTag(chanson, songName);
 		DaoChansonJPA.commit();
 		return "ChansonModifie";
 	}

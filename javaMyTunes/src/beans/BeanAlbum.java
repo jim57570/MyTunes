@@ -46,7 +46,7 @@ public class BeanAlbum implements Serializable {
 		
 		List<Chanson> listChanson = DaoChansonJPA.getInstance().loadAll();
 		for(int i=0; i<listChanson.size(); i++) {
-			TagEdit.exportTag(listChanson.get(i));
+			TagEdit.exportTag(listChanson.get(i), listChanson.get(i).getNomFichier());
 		}
 		
 		

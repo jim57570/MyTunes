@@ -125,13 +125,13 @@ public class TagEdit {
 		}	
 	}
 	
-	public static void exportTag(Chanson c) {
+	//songName = nom avant modification de la chanson, dans le cas si on change le nom du fichier .mp3
+	public static void exportTag(Chanson c, String songName) {
 		//on récupère le nom original du fichier avant de le renommer
-		String originalName = DaoChansonJPA.getInstance().get(c.getId()).getNomFichier();
-		System.out.println("Original Name: " + originalName);
-		File mp3 = new File(serverPath+originalName);
+		System.out.println("Original Name: " + songName);
+		System.out.println(c);
+		File mp3 = new File(serverPath+songName);
 		if(mp3.exists()) {
-			mp3.renameTo(new File(serverPath+c.getNomFichier()));
 			try {
 				AudioFile af = AudioFileIO.read(mp3);
 				Tag tag = af.getTag();
@@ -172,6 +172,7 @@ public class TagEdit {
 				System.out.println("Erreur lors de l'écriture du .mp3 par JAudiotagger !");
 				e.printStackTrace();
 			}
+			mp3.renameTo(new File(serverPath+c.getNomFichier()));
 		}
 		else {
 			System.out.println("Fichier inexistant !");
