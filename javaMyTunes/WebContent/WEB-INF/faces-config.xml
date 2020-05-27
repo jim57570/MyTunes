@@ -70,10 +70,26 @@
 		</navigation-case>
 	</navigation-rule>
 	<navigation-rule>
+		<display-name>formAlbum.xhtml</display-name>
+		<from-view-id>/formAlbum.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>AlbumEnregistre</from-outcome>
+			<to-view-id>/listeAlbums.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
 		<display-name>editArtiste.xhtml</display-name>
 		<from-view-id>/editArtiste.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>ArtisteModifie</from-outcome>
+			<to-view-id>/listeArtistes.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>formArtiste.xhtml</display-name>
+		<from-view-id>/formArtiste.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>ArtisteEnregistre</from-outcome>
 			<to-view-id>/listeArtistes.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>

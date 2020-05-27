@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15877306795490" configfile="/javaMyTunes/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="formChanson.xhtml" id="pf15879967222730" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15879967222731" path="/formChanson.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="listeChansons.xhtml" x="252" y="216" id="pf15879967222732" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf15879967222731 pf15888412229230" path="/listeChansons.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="editChanson.xhtml" id="pf15888412229231" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf15888412229230" path="/editChanson.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="formPlaylist.xhtml" id="pf15893607390910" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf15893607390911" path="/formPlaylist.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="listePlaylist.xhtml" id="pf15893607390912" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" inlinks="pf15893607390911 pf15895527301370" path="/listePlaylist.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="editPlaylist.xhtml" id="pf15895527301371" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf15895527301370" path="/editPlaylist.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="editAlbum.xhtml" id="pf15904145474040" referenceLink="//@navigationRule.4/@fromViewId|" outlinks="pf15904145474041" path="/editAlbum.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="listeAlbums.xhtml" id="pf15904145474042" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" inlinks="pf15904145474041" path="/listeAlbums.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="formChanson.xhtml" x="122" y="178" id="pf15879967222730" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15879967222731" path="/formChanson.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="listeChansons.xhtml" x="338" y="370" id="pf15879967222732" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf15879967222731 pf15888412229230" path="/listeChansons.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="editChanson.xhtml" x="122" y="562" id="pf15888412229231" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf15888412229230" path="/editChanson.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="formPlaylist.xhtml" x="122" y="1330" id="pf15893607390910" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf15893607390911" path="/formPlaylist.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="listePlaylist.xhtml" x="338" y="1522" id="pf15893607390912" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" inlinks="pf15893607390911 pf15895527301370" path="/listePlaylist.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="editPlaylist.xhtml" x="122" y="1714" id="pf15895527301371" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf15895527301370" path="/editPlaylist.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="editAlbum.xhtml" x="122" y="2098" id="pf15904145474040" referenceLink="//@navigationRule.4/@fromViewId|" outlinks="pf15904145474041" path="/editAlbum.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="listeAlbums.xhtml" x="338" y="2098" id="pf15904145474042" referenceLink="//@navigationRule.5/@navigationCase.0/@toViewId|" inlinks="pf15904145474041 pf15905762211690" path="/listeAlbums.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="editArtiste.xhtml" x="122" y="2482" id="pf15905762211691" referenceLink="//@navigationRule.6/@fromViewId|" outlinks="pf15905762211702" path="/editArtiste.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="listeArtistes.xhtml" x="338" y="2482" id="pf15905762211703" referenceLink="//@navigationRule.6/@navigationCase.0/@toViewId|" inlinks="pf15905762211702" path="/listeArtistes.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="formAlbum.xhtml" id="pf15905762211704" referenceLink="//@navigationRule.5/@fromViewId|" outlinks="pf15905762211690" path="/formAlbum.xhtml"/>
   <links id="pf15879967222731" target="pf15879967222732" source="pf15879967222730" outcome="ChansonEnregistre"/>
   <links id="pf15888412229230" target="pf15879967222732" source="pf15888412229231" outcome="ChansonModifie"/>
   <links id="pf15893607390911" target="pf15893607390912" source="pf15893607390910" outcome="PlaylistEnregistre"/>
   <links id="pf15895527301370" target="pf15893607390912" source="pf15895527301371" outcome="PlaylistModifie"/>
   <links id="pf15904145474041" target="pf15904145474042" source="pf15904145474040" outcome="AlbumModifie"/>
+  <links id="pf15905762211702" target="pf15905762211703" source="pf15905762211691" outcome="ArtisteModifie"/>
+  <links id="pf15905762211690" target="pf15904145474042" source="pf15905762211704" outcome="AlbumEnregistre"/>
 </pageflow:Pageflow>

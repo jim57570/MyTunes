@@ -6,10 +6,9 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-	<title>MyTunes - Liste des albums</title>
+	<title>MyTunes - Ajout d'un artiste</title>
 	<h:outputStylesheet library="css" name="bootstrap.min.css" />
 </h:head>
-
 <h:body>
 	<header>
 		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -18,8 +17,8 @@
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item"><a href="listeChansons.xhtml" class="nav-link">Chansons</a></li>
 					<li class="nav-item"><a href="listePlaylist.xhtml" class="nav-link">Playlists</a></li>
-					<li class="nav-item active"><a href="listeAlbums.xhtml" class="nav-link">Albums</a></li>
-					<li class="nav-item"><a class="nav-link">Artistes</a></li>
+					<li class="nav-item"><a class="nav-link">Albums</a></li>
+					<li class="nav-item active"><a class="nav-link">Artistes</a></li>
 					<li class="nav-item"><a href="listeGenres.xhtml" class="nav-link">Genres</a></li>
 				</ul>
 				<h:form id="form_recherche" class="form-inline my-2 my-lg-0">
@@ -36,32 +35,22 @@
 	
 	<main role="main">
 		<section class="jumbotron text-center bg-light">
-			<div class="container text-left">
-				<h:outputLink value="formAlbum.xhtml">
-					<h:graphicImage value="/resources/icons/plus-square.svg"></h:graphicImage>
-					<h:outputText class="text-secondary" value=" Ajouter un album" />
-				</h:outputLink>
-			</div>
 			<div class="container">
-				<h1>Liste des albums</h1>
+				<h1>Ajout d'un artiste</h1>
 				
-				<h:dataTable class="table table-striped" value="#{beanAlbum.albums}" var="album">
-					<h:column>
-						<f:facet name="header">#</f:facet>
-						<h:outputText value="#{album.id}"></h:outputText>
-					</h:column>
-					<h:column>
-						<f:facet name="header">Nom de de l'album</f:facet>
-						<h:outputText value="#{album.nom}"></h:outputText>
-					</h:column>
-					<h:column>
-						<f:facet name="header">Modifier</f:facet>
-						<h:outputLink value="editAlbum.xhtml">
-							<h:graphicImage value="/resources/icons/pencil-square.svg" />
-							<f:param name="idAlbum" value="#{album.id}" />
-						</h:outputLink>
-					</h:column>
-				</h:dataTable>
+				<h:form id="Form_artiste">
+					<div class="form-group row">
+						<h:outputLabel value="Nom de l'artiste :" />
+						
+						<h:inputText class="form-control" id="Nom_artiste" value="#{beanArtiste.artiste.nom}">
+							<f:validateRequired />
+						</h:inputText>
+						
+						<h:commandButton class="btn btn-primary" value="Enregistrer" type="submit" action="#{beanArtiste.save}"></h:commandButton>
+						<h:outputText value=" " />
+						<h:commandButton class="btn btn-secondary" value="Retour au menu" acton="listeArtistes.xhtml"></h:commandButton>
+					</div>
+				</h:form>
 			</div>
 		</section>
 	</main>

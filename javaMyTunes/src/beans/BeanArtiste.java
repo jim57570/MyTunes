@@ -52,5 +52,10 @@ public class BeanArtiste implements Serializable {
 		DaoArtisteJPA.commit();
 		return "ArtisteModifie";
 	}
+	
+	public String save() {
+		DaoArtisteJPA.getInstance().save(artiste);
+		return "ArtisteEnregistre";
+	}
 
 }

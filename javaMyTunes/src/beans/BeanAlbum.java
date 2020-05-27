@@ -53,5 +53,10 @@ public class BeanAlbum implements Serializable {
 		DaoAlbumJPA.commit();
 		return "AlbumModifie";
 	}
+	
+	public String save() {
+		DaoAlbumJPA.getInstance().save(album);
+		return "AlbumEnregistre";
+	}
 
 }
