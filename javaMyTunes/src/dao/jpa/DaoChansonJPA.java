@@ -47,7 +47,7 @@ public class DaoChansonJPA extends DaoJPA implements DaoChanson {
 	public List<Chanson> find(String nom) {
 		//requête JPQL avec un paramètre
 		List<Chanson> listChanson = DaoJPA.getManager()
-				.createQuery("SELECT c FROM Chanson c WHERE c.titre LIKE ?1", Chanson.class) //c.titre par rapport à l'objet métier et pas à la bdd !
+				.createQuery("SELECT c FROM Chanson c WHERE c.titre LIKE ?1 OR c.nomFichier LIKE ?1", Chanson.class) //c.titre par rapport à l'objet métier et pas à la bdd !
 				.setParameter(1, nom)
 				.getResultList();
 		return listChanson;
